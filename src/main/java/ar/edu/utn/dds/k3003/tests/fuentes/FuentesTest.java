@@ -1,4 +1,4 @@
-package ar.edu.utn.dds.k3003.tests.viandas;
+package ar.edu.utn.dds.k3003.tests.fuentes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

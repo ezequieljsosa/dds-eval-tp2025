@@ -5,9 +5,9 @@ import static org.junit.platform.engine.discovery.DiscoverySelectors.selectPacka
 
 import ar.edu.utn.dds.k3003.facades.dtos.Constants;
 import ar.edu.utn.dds.k3003.tests.agregador.AgregadorTest;
+import ar.edu.utn.dds.k3003.tests.fuentes.FuentesTest;
 import ar.edu.utn.dds.k3003.tests.pdi.PdITest;
 import ar.edu.utn.dds.k3003.tests.solicitudes.SolicitudesTest;
-import ar.edu.utn.dds.k3003.tests.viandas.FuentesTest;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -32,11 +32,12 @@ public class Evaluador {
       System.err.println("No se encontró la clase Fachada");
       System.exit(3);
     }
+    System.err.println(first.get());
     System.exit(runTests(first.get().paquete()));
   }
 
   public static int runTests(String paqueteTests) {
-
+    System.err.println("lalala: " + paqueteTests);
     var listener = new SummaryGeneratingListener();
     var request =
         LauncherDiscoveryRequestBuilder.request()

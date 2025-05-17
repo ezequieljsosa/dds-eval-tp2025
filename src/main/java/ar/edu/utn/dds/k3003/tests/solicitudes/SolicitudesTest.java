@@ -39,7 +39,7 @@ public class SolicitudesTest implements TestTP<FachadaSolicitudes> {
   }
 
   @Test
-  @DisplayName("Asignar un traslado a una vianda que no existe")
+  @DisplayName("Agregar una solicitud")
   void testAgregarSolicitud() {
     when(fachadaFuente.buscarHechoXId(HECHO_ID)).thenReturn(
         new HechoDTO(HECHO_ID, TITULO_COLECCION));
@@ -52,7 +52,7 @@ public class SolicitudesTest implements TestTP<FachadaSolicitudes> {
   }
 
   @Test
-  @DisplayName("Asignar un traslado a una vianda que no existe")
+  @DisplayName("Intentar agregar una solicitud a un hecho que no existe")
   void testAgregarSolicitudNoExisteHecho() {
     when(fachadaFuente.buscarHechoXId(HECHO_ID)).thenThrow(NoSuchElementException.class);
 
