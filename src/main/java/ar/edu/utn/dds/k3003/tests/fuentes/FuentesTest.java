@@ -70,7 +70,7 @@ public class FuentesTest implements TestTP<FachadaFuente> {
   void testAgregarHecho() {
 
     instancia.agregar(new ColeccionDTO(UNA_COLECCION, "coleccion"));
-    val hechoDTO = new HechoDTO("", UN_TITULO, UNA_COLECCION, List.of("etiqueta1"),
+    val hechoDTO = new HechoDTO("", UNA_COLECCION, UN_TITULO, List.of("etiqueta1"),
         CategoriaHechoEnum.ENTRETENIMIENTO,
         "bsas", LocalDateTime.now(), "celular");
 

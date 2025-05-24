@@ -7,7 +7,7 @@ public record HechoDTO(String id,String nombreColeccion, String titulo, List<Str
                        CategoriaHechoEnum categoria,
                        String ubicacion, LocalDateTime fecha, String origen) {
 
-  public HechoDTO(String id,String nombreColeccion) {
-    this(id, nombreColeccion, null, null, null, null, null, null);
+  public HechoDTO(String id,String nombreColeccion, String titulo) {
+    this(id, nombreColeccion, titulo, null, null, null, null, null);
   }
 }

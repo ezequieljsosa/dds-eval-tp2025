@@ -14,6 +14,7 @@ import ar.edu.utn.dds.k3003.facades.dtos.SolicitudDTO;
 import ar.edu.utn.dds.k3003.tests.TestTP;
 import java.util.NoSuchElementException;
 import lombok.SneakyThrows;
+import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,8 +42,9 @@ public class SolicitudesTest implements TestTP<FachadaSolicitudes> {
   @Test
   @DisplayName("Agregar una solicitud")
   void testAgregarSolicitud() {
+    val tituloHecho = "UnTitulo Hecho";
     when(fachadaFuente.buscarHechoXId(HECHO_ID)).thenReturn(
-        new HechoDTO(HECHO_ID, TITULO_COLECCION));
+        new HechoDTO(HECHO_ID, TITULO_COLECCION,tituloHecho));
     var solicitudDTO = instancia.agregar(
         new SolicitudDTO("", "una solicitud", EstadoSolicitudBorradoEnum.CREADA, HECHO_ID));
 

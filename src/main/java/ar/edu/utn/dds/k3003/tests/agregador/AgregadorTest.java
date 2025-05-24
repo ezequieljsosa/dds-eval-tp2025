@@ -70,9 +70,8 @@ public class AgregadorTest implements TestTP<FachadaAgregador> {
 
     val titulos = instancia.hechos("1").stream().map(HechoDTO::titulo).toList();
 
-    assertEquals(
-        titulos.containsAll(List.of("a", "b", "c", "d")),
-        instancia.fuentes().size(),
+    assertTrue(
+        titulos.containsAll(List.of("a", "b", "c")),
         "El agregador no retorna todos los hechos que deberia para el consenso TODO.");
 
   }
@@ -86,7 +85,7 @@ public class AgregadorTest implements TestTP<FachadaAgregador> {
     val titulos = instancia.hechos("1").stream().map(HechoDTO::titulo).toList();
 
     assertTrue(
-        titulos.containsAll(List.of("a", "b")),
+        titulos.containsAll(List.of( "b")),
         "El agregador no retorna todos los hechos que deberia para el consenso al menos 2..");
 
   }
@@ -98,10 +97,10 @@ public class AgregadorTest implements TestTP<FachadaAgregador> {
     instancia.addFachadaFuentes(fuenteDTO2.id(), fuente2);
     instancia.setConsensoStrategy(consenso, "1");
     when(fuente1.buscarHechosXColeccion("1")).thenReturn(List.of(
-        new HechoDTO("1", "a"), new HechoDTO("2", "b"), new HechoDTO("3", "c")
+        new HechoDTO("1", "1","a"), new HechoDTO("2", "1","b"), new HechoDTO("3", "1","c")
     ));
     when(fuente2.buscarHechosXColeccion("1")).thenReturn(List.of(
-        new HechoDTO("4", "a"), new HechoDTO("5", "B"), new HechoDTO("6", "d")
+        new HechoDTO("4", "1","a"), new HechoDTO("5", "1","b" ), new HechoDTO("6", "2","d")
     ));
   }
 

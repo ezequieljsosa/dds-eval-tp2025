@@ -54,7 +54,7 @@ public class PdITest implements TestTP<FachadaProcesadorPdI> {
     assertNotNull(pdi1.id(), "El PdI deberia tener un identificador no nulo");
     assertEquals(pdi1.hechoId(), instancia.buscarPdIPorId(pdi1.id()).hechoId(),
         "No se esta recuperando el PdI correctamente");
-    assertEquals(2, instancia.buscarPorHecho(PDI_ID).size(), "No se estan sumando correctamente los PdIs");
+    assertEquals(2, instancia.buscarPorHecho(UN_HECHO_ID).size(), "No se estan sumando correctamente los PdIs");
 
   }
 
