@@ -70,6 +70,9 @@ public class AgregadorTest implements TestTP<FachadaAgregador> {
 
     val titulos = instancia.hechos("1").stream().map(HechoDTO::titulo).toList();
 
+    assertEquals(3,
+            titulos.size(),
+            "El agregador con concenso menos 2, esta retornando titulos que no deberia.");
     assertTrue(
         titulos.containsAll(List.of("a", "b", "c")),
         "El agregador no retorna todos los hechos que deberia para el consenso TODO.");
@@ -84,9 +87,12 @@ public class AgregadorTest implements TestTP<FachadaAgregador> {
 
     val titulos = instancia.hechos("1").stream().map(HechoDTO::titulo).toList();
 
+    assertEquals(2,
+            titulos.size(),
+            "El agregador con concenso menos 2, esta retornando titulos que no deberia.");
     assertTrue(
-        titulos.containsAll(List.of( "b")),
-        "El agregador no retorna todos los hechos que deberia para el consenso al menos 2..");
+        titulos.containsAll(List.of("a", "b")),
+        "El agregador no retorna todos los hechos que deberia para el consenso al menos 2.");
 
   }
 
