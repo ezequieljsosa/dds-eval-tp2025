@@ -93,7 +93,7 @@ public class FuentesTest implements TestTP<FachadaFuente> {
         new PdIDTO("1", UN_TITULO));
 
     instancia.agregar(new ColeccionDTO(UNA_COLECCION, "coleccion"));
-    val hechoDTO = new HechoDTO("", UN_TITULO, UNA_COLECCION, List.of(),
+    val hechoDTO = new HechoDTO("", UNA_COLECCION, UN_TITULO, List.of(),
         CategoriaHechoEnum.ENTRETENIMIENTO,
         "bsas", LocalDateTime.now(), "celular");
     val hecho1 = instancia.agregar(hechoDTO);
@@ -109,7 +109,7 @@ public class FuentesTest implements TestTP<FachadaFuente> {
     when(fachadaProcesadorPdI.procesar(any(PdIDTO.class))).thenThrow(IllegalStateException.class);
 
     instancia.agregar(new ColeccionDTO(UNA_COLECCION, "coleccion"));
-    val hechoDTO = new HechoDTO("", UN_TITULO, UNA_COLECCION, List.of(),
+    val hechoDTO = new HechoDTO("", UNA_COLECCION, UN_TITULO, List.of(),
         CategoriaHechoEnum.ENTRETENIMIENTO,
         "bsas", LocalDateTime.now(), "celular");
     val hecho1 = instancia.agregar(hechoDTO);

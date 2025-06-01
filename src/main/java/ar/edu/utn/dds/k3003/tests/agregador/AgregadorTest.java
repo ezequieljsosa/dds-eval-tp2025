@@ -106,7 +106,7 @@ public class AgregadorTest implements TestTP<FachadaAgregador> {
         new HechoDTO("1", "1","a"), new HechoDTO("2", "1","b"), new HechoDTO("3", "1","c")
     ));
     when(fuente2.buscarHechosXColeccion("1")).thenReturn(List.of(
-        new HechoDTO("4", "1","a"), new HechoDTO("5", "1","b" ), new HechoDTO("6", "2","d")
+        new HechoDTO("4", "1","a"), new HechoDTO("5", "1","b" )
     ));
   }
 
