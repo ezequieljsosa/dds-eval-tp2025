@@ -26,12 +26,11 @@ public class PdITest implements TestTP<FachadaProcesadorPdI> {
   private static final String UN_HECHO_ID = "unHechoId";
   public static final PdIDTO PDI = new PdIDTO("", UN_HECHO_ID, "una info", "bsas",
       LocalDateTime.now(), "1234556", List.of());
-  private static final String PDI_ID = "unPDIid";
+  public static final PdIDTO PDI2 = new PdIDTO("", UN_HECHO_ID + "2", "una info", "bsas",
+          LocalDateTime.now(), "1234556", List.of());
 
   private FachadaProcesadorPdI instancia;
-  private PdIDTO pdi1;
-  private PdIDTO pdi2;
-
+  
   @Mock
   FachadaSolicitudes fachadaSolicitudes;
 
@@ -43,18 +42,32 @@ public class PdITest implements TestTP<FachadaProcesadorPdI> {
   }
 
   @Test
-  @DisplayName("Procesar PdIs")
+  @DisplayName("Procesar 2 PdIs")
   void testProcesarPdI() {
 
     when(fachadaSolicitudes.estaActivo(UN_HECHO_ID)).thenReturn(true);
 
     val pdi1 = instancia.procesar(PDI);
-    instancia.procesar(PDI);
+    instancia.procesar(PDI2);
 
     assertNotNull(pdi1.id(), "El PdI deberia tener un identificador no nulo");
     assertEquals(pdi1.hechoId(), instancia.buscarPdIPorId(pdi1.id()).hechoId(),
         "No se esta recuperando el PdI correctamente");
     assertEquals(2, instancia.buscarPorHecho(UN_HECHO_ID).size(), "No se estan sumando correctamente los PdIs");
+
+  }
+
+  @Test
+  @DisplayName("No reprocesar PdIs")
+  void testReProcesarPdI() {
+
+    when(fachadaSolicitudes.estaActivo(UN_HECHO_ID)).thenReturn(true);
+
+    instancia.procesar(PDI);
+    instancia.procesar(PDI);
+
+    assertEquals(1, instancia.buscarPorHecho(UN_HECHO_ID).size(),
+            "Si se intenta procesar 2 veces el mismo PDI, no se deberia volver a agrega / reprocesar");
 
   }
 
