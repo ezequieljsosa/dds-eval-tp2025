@@ -20,4 +20,6 @@ public interface FachadaFuente {
   void setProcesadorPdI(FachadaProcesadorPdI procesador);
 
   PdIDTO agregar(PdIDTO pdIDTO) throws IllegalStateException;
+
+  List<ColeccionDTO> colecciones();
 }
