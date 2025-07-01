@@ -37,7 +37,6 @@ public class Evaluador {
   }
 
   public static int runTests(String paqueteTests) {
-    System.err.println("lalala: " + paqueteTests);
     var listener = new SummaryGeneratingListener();
     var request =
         LauncherDiscoveryRequestBuilder.request()

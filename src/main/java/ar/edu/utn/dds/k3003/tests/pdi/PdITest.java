@@ -42,18 +42,33 @@ public class PdITest implements TestTP<FachadaProcesadorPdI> {
   }
 
   @Test
-  @DisplayName("Procesar 2 PdIs")
+  @DisplayName("Procesar 2 PdIs para el mismo hecho")
   void testProcesarPdI() {
 
     when(fachadaSolicitudes.estaActivo(UN_HECHO_ID)).thenReturn(true);
 
     val pdi1 = instancia.procesar(PDI);
-    instancia.procesar(PDI2);
+    instancia.procesar(PDI);
 
     assertNotNull(pdi1.id(), "El PdI deberia tener un identificador no nulo");
     assertEquals(pdi1.hechoId(), instancia.buscarPdIPorId(pdi1.id()).hechoId(),
         "No se esta recuperando el PdI correctamente");
     assertEquals(2, instancia.buscarPorHecho(UN_HECHO_ID).size(), "No se estan sumando correctamente los PdIs");
+
+  }
+
+  @Test
+  @DisplayName("Procesar 2 PdIs en distintos hechos")
+  void testProcesarPdIEnDistintosHechos() {
+
+    when(fachadaSolicitudes.estaActivo(PDI.hechoId())).thenReturn(true);
+    when(fachadaSolicitudes.estaActivo(PDI2.hechoId())).thenReturn(true);
+
+    instancia.procesar(PDI);
+    instancia.procesar(PDI2);
+
+    assertEquals(1, instancia.buscarPorHecho(UN_HECHO_ID).size(), "No se estan sumando correctamente los PdIs");
+    assertEquals(1, instancia.buscarPorHecho(PDI2.hechoId()).size(), "No se estan sumando correctamente los PdIs");
 
   }
 
